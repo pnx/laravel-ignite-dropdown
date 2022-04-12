@@ -1,3 +1,10 @@
+@php
+if ($errors->has($name)) {
+    $border = 'border-red-400 focus:border-red-500 focus:ring-red-500';
+} else {
+    $border = 'border-gray-200 focus:border-gray-300 focus:ring-gray-300';
+}
+@endphp
 
 <div x-data="{ open: @entangle('menu_open').defer }"
     x-on:keydown.escape.prevent.stop="open && $wire.close()"
@@ -11,7 +18,7 @@
         x-on:click="!open && $wire.open()"
         x-on:click.away="open && $wire.close()">
 
-        <div class="bg-white px-3 py-2 w-full h-10 text-gray-600 border rounded-md focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+        <div class="bg-white px-3 py-2 w-full h-10 text-gray-600 rounded-md border {!! $border !!} focus:ring-opacity-50">
             {{ $this->renderSelection() }}
             <input type="text" wire:model="search" :name="$name . '_search'" class="absolute w-11/12 bg-transparent select-none" autocomplete="off" />
         </div>
@@ -45,4 +52,9 @@
         @endforeach
         @endif
     </ul>
+
+    @error($name)
+    <p class="text-red-400 text-sm">{{ $message }}</p>
+    @enderror
+
 </div>
