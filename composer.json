@@ -11,7 +11,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "livewire/livewire": "^2.10",
-		"pnx/laravel-ignite": "^0.1.1"
+        "pnx/laravel-ignite": "^0.1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3",

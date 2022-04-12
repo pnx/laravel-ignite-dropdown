@@ -25,11 +25,11 @@ abstract class AbstractDropdownComponent extends Component
      */
     public Collection $options;
 
-	/**
-	 * Search string
+    /**
+     * Search string
      *
      * @var string
-	 */
+     */
     public string $search = '';
 
     /**
@@ -39,10 +39,10 @@ abstract class AbstractDropdownComponent extends Component
      */
     public bool $menu_open = false;
 
-	/**
-	 * True if dropdown value is required, false if optional.
-	 */
-	public bool $required;
+    /**
+     * True if dropdown value is required, false if optional.
+     */
+    public bool $required;
 
     /**
      * Placeholder string for the input.
@@ -126,10 +126,10 @@ abstract class AbstractDropdownComponent extends Component
     abstract public function option($value);
 
     /**
-	 * Get options filtered by user provided search text.
-	 *
-	 * @return array
-	 */
+     * Get options filtered by user provided search text.
+     *
+     * @return array
+     */
     abstract public function options(string $search) : Collection;
 
     /**

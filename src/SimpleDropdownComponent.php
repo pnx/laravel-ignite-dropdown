@@ -42,10 +42,10 @@ abstract class SimpleDropdownComponent extends AbstractDropdownComponent
     }
 
     /**
-	 * Get options filtered by user provided search text.
-	 *
-	 * @return array
-	 */
+     * Get options filtered by user provided search text.
+     *
+     * @return array
+     */
     public function options(string $search) : Collection
     {
         $options = $this->getAllOptions();
