@@ -8,6 +8,8 @@ use Illuminate\Support\Collection;
 
 abstract class AbstractDropdownComponent extends Component
 {
+    use Traits\ReceivesValidationEvents;
+
     /**
      * Input name
      */
