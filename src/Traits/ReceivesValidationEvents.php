@@ -4,16 +4,11 @@ namespace Ignite\Traits;
 
 trait ReceivesValidationEvents
 {
-    protected function getListeners()
-    {
-        $listeners = [
-            'validation.addError' => 'onValidationAddError',
-            'validation.setErrorBag' => 'onValidationSetErrorBag',
-            'validation.resetErrorBag' => 'onValidationResetErrorBag',
-        ];
-
-        return array_merge($this->listeners, $listeners);
-    }
+    protected $validation_listeners = [
+        'validation.addError' => 'onValidationAddError',
+        'validation.setErrorBag' => 'onValidationSetErrorBag',
+        'validation.resetErrorBag' => 'onValidationResetErrorBag',
+    ];
 
     public function onValidationAddError($name, $message)
     {

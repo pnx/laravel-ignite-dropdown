@@ -6,14 +6,9 @@ use Illuminate\Support\Str;
 
 trait HandlesDropdownEvents
 {
-    protected function getListeners()
-    {
-        $listeners = [
-            'dropdown-select' => 'onDropdownSelected'
-        ];
-
-        return array_merge($this->listeners, $listeners);
-    }
+    protected $dropdown_listeners = [
+        'dropdown-select' => 'onDropdownSelected'
+    ];
 
     public function onDropdownSelected($field, $value)
     {

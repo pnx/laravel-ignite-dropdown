@@ -66,6 +66,11 @@ abstract class AbstractDropdownComponent extends Component
      */
     protected string $placeholder_view = 'ignite-dropdown::placeholder';
 
+    protected function getListeners()
+    {
+        return $this->validation_listeners;
+    }
+
     /**
      * Initialize component
      *
