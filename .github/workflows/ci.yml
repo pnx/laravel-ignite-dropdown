@@ -1,0 +1,20 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    name: Test - php v${{ matrix.php-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: [ '7.4', '8.0', '8.1' ]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: php-actions/composer@v5
+      with:
+        php_version: ${{ matrix.php-version }}
+
+    - uses: php-actions/phpunit@v3
+      with:
+        php_version: ${{ matrix.php-version }}
