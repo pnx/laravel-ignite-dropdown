@@ -2,7 +2,7 @@
 
 namespace Tests\Fixtures;
 
-use Ignite\SimpleDropdownComponent;
+use Ignite\Components\SimpleDropdownComponent;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 

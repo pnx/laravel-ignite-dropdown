@@ -1,6 +1,6 @@
 <?php
 
-namespace Ignite;
+namespace Ignite\Components;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;

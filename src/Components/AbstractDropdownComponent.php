@@ -1,14 +1,16 @@
 <?php
 
-namespace Ignite;
+namespace Ignite\Components;
 
 use Livewire\Component;
 use Livewire\Wireable;
 use Illuminate\Support\Collection;
 
+use Ignite\Traits\ReceivesValidationEvents;
+
 abstract class AbstractDropdownComponent extends Component
 {
-    use Traits\ReceivesValidationEvents;
+    use ReceivesValidationEvents;
 
     /**
      * Input name

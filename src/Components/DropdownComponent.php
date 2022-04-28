@@ -1,6 +1,6 @@
 <?php
 
-namespace Ignite;
+namespace Ignite\Components;
 
 abstract class DropdownComponent extends AbstractDropdownComponent
 {
