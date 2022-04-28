@@ -2,10 +2,6 @@
 
 namespace Ignite;
 
-use Livewire\Component;
-use Livewire\Wireable;
-use Illuminate\Support\Collection;
-
 abstract class DropdownComponent extends AbstractDropdownComponent
 {
     /**
