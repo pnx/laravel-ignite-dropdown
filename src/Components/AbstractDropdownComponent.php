@@ -3,7 +3,6 @@
 namespace Ignite\Components;
 
 use Livewire\Component;
-use Livewire\Wireable;
 use Illuminate\Support\Collection;
 
 use Ignite\Traits\ReceivesValidationEvents;
