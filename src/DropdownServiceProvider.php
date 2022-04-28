@@ -2,8 +2,6 @@
 
 namespace Ignite;
 
-//use Livewire\Livewire;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class DropdownServiceProvider extends ServiceProvider
