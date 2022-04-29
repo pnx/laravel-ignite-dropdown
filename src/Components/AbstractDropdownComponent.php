@@ -17,9 +17,9 @@ abstract class AbstractDropdownComponent extends Component
     public string $name;
 
     /**
-     * The selected option
+     * The selected value
      */
-    public $selected;
+    public $value;
 
     /**
      * Options
@@ -109,14 +109,13 @@ abstract class AbstractDropdownComponent extends Component
     }
 
     /**
-     * Compute value property from selected property.
+     * Get selected item property
+     *
+     * @return mixed
      */
-    public function getValueProperty()
+    public function getSelectedProperty()
     {
-        if ($this->selected) {
-            return $this->value($this->selected);
-        }
-        return null;
+        return $this->value !== null ? $this->option($this->value) : null;
     }
 
     /**
@@ -174,7 +173,7 @@ abstract class AbstractDropdownComponent extends Component
      */
     public function select($value = null)
     {
-        $this->selected = $value !== null ? $this->option($value) : null;
+        $this->value = $this->option($value) ? $value : null;
 
         // Notify any parent component.
         $this->emitUp('dropdown-select', $this->name, $this->value);
@@ -189,7 +188,7 @@ abstract class AbstractDropdownComponent extends Component
      */
     public function hasSelection() : bool
     {
-        return $this->selected !== null;
+        return $this->value !== null;
     }
 
     /**
