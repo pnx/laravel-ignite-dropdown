@@ -3,23 +3,32 @@
 namespace Tests\Unit\Traits;
 
 use Tests\TestCase;
-use Tests\Fixtures\SimpleDropdownFixture;
 use Livewire\Livewire;
+use Ignite\Components\DropdownComponent;
 
 class DropdownComponentTest extends TestCase
 {
     public function test_mount_with_value()
     {
-        Livewire::test(SimpleDropdownFixture::class, ['name' => 'dropdown', 'value' => 1 ])
+        $array = [
+            'One',
+            'Two'
+        ];
+
+        Livewire::test(DropdownComponent::class, ['name' => 'dropdown', 'value' => 1, 'adapter' => [ 'array', $array ] ])
             ->assertSet('name', 'dropdown')
             ->assertSet('value', 1)
-            ->assertSet('selected', ['k' => 1, 'v' => 'One']);
+            ->assertSet('selected', 'Two');
     }
-
 
     public function test_mount_with_invalid_value()
     {
-        Livewire::test(SimpleDropdownFixture::class, ['name' => 'dropdown', 'value' => 999 ])
+        $array = [
+            'One',
+            'Two'
+        ];
+
+        Livewire::test(DropdownComponent::class, ['name' => 'dropdown', 'value' => 999, 'adapter' => [ 'array', $array ] ])
             ->assertSet('name', 'dropdown')
             ->assertSet('value', null)
             ->assertSet('selected', null);
@@ -27,11 +36,17 @@ class DropdownComponentTest extends TestCase
 
     public function test_mount()
     {
-        Livewire::test(SimpleDropdownFixture::class, [
+        $array = [
+            'One',
+            'Two'
+        ];
+
+        Livewire::test(DropdownComponent::class, [
                 'name' => 'dropdown',
                 'required' => true,
                 'no_results' => 'no-results-custom',
-                'placeholder' => 'Custom placeholder'
+                'placeholder' => 'Custom placeholder',
+                'adapter' => [ 'array', $array ]
             ])
             ->assertSet('required', true)
             ->assertSet('no_results', 'no-results-custom')
@@ -40,35 +55,54 @@ class DropdownComponentTest extends TestCase
 
     public function test_required_selects_first_option()
     {
-        Livewire::test(SimpleDropdownFixture::class, ['name' => 'dropdown', 'required' => true])
+        $array = [
+            'One',
+            'Two'
+        ];
+
+        Livewire::test(DropdownComponent::class, [
+                'name' => 'dropdown',
+                'required' => true,
+                'adapter' => [ 'array', $array ]
+            ])
             ->assertSet('required', true)
-            ->assertSet('value', 1)
-            ->assertSet('selected', ['k' => 1, 'v' => 'One']);
+            ->assertSet('value', 0)
+            ->assertSet('selected', 'One');
     }
 
     public function test_select()
     {
-        Livewire::test(SimpleDropdownFixture::class, ['name' => 'my-name' ])
-            ->call('select', 2)
-            ->assertSet('selected', ['k' => 2, 'v' => 'Two'])
-            ->assertSet('value', 2)
-            ->assertEmitted('dropdown-select', 'my-name', 2)
+        $array = [
+            'one' => 'One',
+            'two' => 'Two'
+        ];
+
+        Livewire::test(DropdownComponent::class, ['name' => 'my-name', 'adapter' => [ 'array', $array ] ])
+            ->call('select', 'one')
+            ->assertSet('selected', 'One')
+            ->assertSet('value', 'one')
+            ->assertEmitted('dropdown-select', 'my-name', 'one')
             ->call('select', 999)
             ->assertSet('selected', null)
             ->assertSet('value', null)
             ->assertEmitted('dropdown-select', 'my-name', null);
     }
 
-    public function test_options_filter()
+    public function test_options_search()
     {
-        Livewire::test(SimpleDropdownFixture::class, ['name' => 'dropdown' ])
+        $array = [
+            1 => 'One',
+            2 => 'Two'
+        ];
+
+        Livewire::test(DropdownComponent::class, ['name' => 'dropdown', 'adapter' => [ 'array', $array ] ])
             ->set('search', 'tw')
-            ->assertSet('options', collect([1 => ['k' => 2, 'v' => 'Two']]));
+            ->assertSet('options', collect([2 => 'Two']));
     }
 
     public function test_open_close()
     {
-        Livewire::test(SimpleDropdownFixture::class, ['name' => 'dropdown' ])
+        Livewire::test(DropdownComponent::class, ['name' => 'dropdown', 'adapter' => [ 'array', [] ] ])
             // Test open
             ->assertSet('menu_open', false)
             ->assertSet('search', '')
