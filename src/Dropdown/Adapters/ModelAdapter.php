@@ -58,8 +58,8 @@ class ModelAdapter implements DropdownAdapter
     public function value($option)
     {
         // Use value field if present.
-        if (strlen($this->value_field) > 0) {
-            return $option->{$this->value_field};
+        if (strlen($this->getValueField()) > 0) {
+            return $option->{$this->getValueField()};
         }
 
         // Default to primary key.
@@ -115,6 +115,30 @@ class ModelAdapter implements DropdownAdapter
     }
 
     /**
+     * Get model
+     */
+    public function getModel() : Model
+    {
+        return $this->model;
+    }
+
+    /**
+     * Get value field
+     */
+    public function getValueField() : ?string
+    {
+        return $this->value_field;
+    }
+
+    /**
+     * Get display field
+     */
+    public function getDisplayField() : ?string
+    {
+        return $this->display_field;
+    }
+
+    /**
      * The the columns that should applied to search.
      */
     public function getSearchableColumns()
@@ -129,12 +153,20 @@ class ModelAdapter implements DropdownAdapter
     }
 
     /**
+     * Get the order by colums.
+     */
+    public function getOrderBy() : array
+    {
+        return $this->orderBy;
+    }
+
+    /**
      * Render an option item.
      *
      * @return \Illuminate\Contracts\View\View|string
      */
     public function renderOption($option)
     {
-        return $option->{$this->display_field};
+        return $option->{$this->getDisplayField()};
     }
 }

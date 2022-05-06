@@ -30,6 +30,18 @@ class ModelAdapterTest extends TestCase
         ]);
     }
 
+    public function test_getters()
+    {
+        $adapter = new ModelAdapter(User::class);
+
+
+        $this->assertNull($adapter->getValueField());
+        $this->assertEquals('name', $adapter->getDisplayField());
+        $this->assertEmpty($adapter->getOrderBy());
+        $this->assertEquals(['name', 'email'], $adapter->getSearchableColumns());
+        $this->assertTrue($adapter->getModel() instanceof User);
+    }
+
     public function test_options()
     {
         $this->seedUsers();
