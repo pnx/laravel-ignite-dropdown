@@ -2,6 +2,8 @@
 
 namespace Ignite;
 
+use Livewire\Livewire;
+use Ignite\Components\DropdownComponent;
 use Illuminate\Support\ServiceProvider;
 
 class DropdownServiceProvider extends ServiceProvider
@@ -20,6 +22,8 @@ class DropdownServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/ignite'),
         ], 'ignite-translation');
+
+        Livewire::component('ignite-dropdown', DropdownComponent::class);
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'ignite-dropdown');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'ignite');
