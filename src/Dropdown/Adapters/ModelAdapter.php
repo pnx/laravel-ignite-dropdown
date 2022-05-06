@@ -26,12 +26,12 @@ class ModelAdapter implements DropdownAdapter
     /**
      * Columns in the model to use for searching, if empty, fillable array is used.
      */
-    protected array $columns;
+    protected array $columns = [];
 
     /**
      * Columns used to order the dropdown list.
      */
-    protected array $orderBy;
+    protected array $orderBy = [];
 
     /**
      * Constructor.
