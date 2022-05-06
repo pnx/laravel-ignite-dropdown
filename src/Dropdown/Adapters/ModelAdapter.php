@@ -43,11 +43,13 @@ class ModelAdapter implements DropdownAdapter
         $this->display_field = $display_field;
         $this->columns = $columns;
 
-        if (!is_array($orderBy)) {
-            $orderBy = [ $orderBy ];
-        }
+        if ($orderBy !== null) {
+            if (!is_array($orderBy)) {
+                $orderBy = [ $orderBy ];
+            }
 
-        $this->orderBy = $orderBy;
+            $this->orderBy = $orderBy;
+        }
     }
 
     /**
