@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Tests\Fixtures\Models\User;
 use Tests\Fixtures\Models\UserWithTitle;
 use Tests\Fixtures\Models\Contact;
+use Tests\Fixtures\Models\ContactWithSubtitle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Ignite\Dropdown\Adapters\ModelAdapter;
 
@@ -145,7 +146,7 @@ class ModelAdapterTest extends TestCase
         $user = User::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
 
         $adapter = new ModelAdapter(User::class);
-        $this->assertEquals('Jane Doe', (string) $adapter->renderOption($user));
+        $this->assertStringContainsString('Jane Doe', (string) $adapter->renderOption($user));
     }
 
     public function test_renderOption_with_title_interface()
@@ -153,7 +154,15 @@ class ModelAdapterTest extends TestCase
         $user = UserWithTitle::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
 
         $adapter = new ModelAdapter(UserWithTitle::class, null);
-        $this->assertEquals('Jane Doe (jane@example.com)', (string) $adapter->renderOption($user));
+        $this->assertStringContainsString('Jane Doe (jane@example.com)', (string) $adapter->renderOption($user));
+    }
+
+    public function test_renderOption_with_subtitle_interface()
+    {
+        $contact = ContactWithSubtitle::create([ 'name' => 'Ebba Ullrich', 'address' => '5842 Easy Centre', 'city' => 'Colorado, Virginia', 'zip' => '23232-1470', 'phone' => '(434) 336-1206', 'email' => 'xebbax@example.com' ]);
+
+        $adapter = new ModelAdapter(ContactWithSubtitle::class, null);
+        $this->assertStringContainsString('Email: xebbax@example.com, Phone: (434) 336-1206', (string) $adapter->renderOption($contact));
     }
 
     public function test_renderOption_with_override()
@@ -161,6 +170,6 @@ class ModelAdapterTest extends TestCase
         $user = User::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
 
         $adapter = new ModelAdapter(User::class, null, 'email');
-        $this->assertEquals('jane@example.com', (string) $adapter->renderOption($user));
+        $this->assertStringContainsString('jane@example.com', (string) $adapter->renderOption($user));
     }
 }

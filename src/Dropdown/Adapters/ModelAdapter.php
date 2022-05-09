@@ -3,7 +3,9 @@
 namespace Ignite\Dropdown\Adapters;
 
 use Ignite\Contracts\HasTitle;
+use Ignite\Contracts\HasSubtitle;
 use Ignite\Contracts\DropdownAdapter;
+
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -178,7 +180,10 @@ class ModelAdapter implements DropdownAdapter
      */
     public function renderOption($option)
     {
-        return $this->getOptionTitle($option);
+        return view('ignite-dropdown::model.option', [
+            'title' => $this->getOptionTitle($option),
+            'subtitle' => $option instanceof HasSubtitle ? $option->getSubtitle() : null,
+        ]);
     }
 
     /**
