@@ -117,4 +117,11 @@ class ArrayAdapterTest extends TestCase
         $this->assertEquals('Phone', $adapter->value('Phone'));
         $this->assertNull($adapter->value('Password'));
     }
+
+    public function test_render()
+    {
+        $adapter = new ArrayAdapter([]);
+        $this->assertEquals('Phone', $adapter->renderOption('Phone'));
+        $this->assertEquals('Phone', $adapter->renderSelectedOption('Phone'));
+    }
 }

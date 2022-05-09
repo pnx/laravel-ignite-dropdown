@@ -171,4 +171,14 @@ class ModelAdapter implements DropdownAdapter
     {
         return $option->{$this->getDisplayField()};
     }
+
+    /**
+     * Render an selected option item.
+     *
+     * @return \Illuminate\Contracts\View\View|string
+     */
+    public function renderSelectedOption($option)
+    {
+        return $option->{$this->getDisplayField()};
+    }
 }

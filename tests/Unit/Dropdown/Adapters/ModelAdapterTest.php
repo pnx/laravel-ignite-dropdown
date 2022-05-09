@@ -154,4 +154,12 @@ class ModelAdapterTest extends TestCase
         $adapter = new ModelAdapter(User::class, null, 'email');
         $this->assertEquals('jane@example.com', (string) $adapter->renderOption($user));
     }
+
+    public function test_renderSelectedOption()
+    {
+        $user = User::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
+
+        $adapter = new ModelAdapter(User::class);
+        $this->assertEquals('Jane Doe', (string) $adapter->rednerSelectedOption($user));
+    }
 }

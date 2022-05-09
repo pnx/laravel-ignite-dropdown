@@ -76,6 +76,16 @@ class ArrayAdapter implements DropdownAdapter
     }
 
     /**
+     * Render an selected option item.
+     *
+     * @return \Illuminate\Contracts\View\View|string
+     */
+    public function renderSelectedOption($option)
+    {
+        return $option;
+    }
+
+    /**
      * Get the unfiltered options.
      */
     protected function getAllOptions() : Collection
