@@ -35,4 +35,11 @@ interface DropdownAdapter
      * @return \Illuminate\Contracts\View\View|string
      */
     public function renderOption($option);
+
+    /**
+     * Render an selected option item.
+     *
+     * @return \Illuminate\Contracts\View\View|string
+     */
+    public function renderSelectedOption($option);
 }
