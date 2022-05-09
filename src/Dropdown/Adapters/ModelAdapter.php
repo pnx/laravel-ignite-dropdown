@@ -2,6 +2,7 @@
 
 namespace Ignite\Dropdown\Adapters;
 
+use Ignite\Contracts\HasTitle;
 use Ignite\Contracts\DropdownAdapter;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -162,6 +163,14 @@ class ModelAdapter implements DropdownAdapter
         return $this->orderBy;
     }
 
+    public function getOptionTitle($option) : string
+    {
+        if ($option instanceof HasTitle) {
+            return $option->getTitle();
+        }
+        return $option->{$this->getDisplayField()};
+    }
+
     /**
      * Render an option item.
      *
@@ -169,7 +178,7 @@ class ModelAdapter implements DropdownAdapter
      */
     public function renderOption($option)
     {
-        return $option->{$this->getDisplayField()};
+        return $this->getOptionTitle($option);
     }
 
     /**
@@ -179,6 +188,6 @@ class ModelAdapter implements DropdownAdapter
      */
     public function renderSelectedOption($option)
     {
-        return $option->{$this->getDisplayField()};
+        return $this->getOptionTitle($option);
     }
 }

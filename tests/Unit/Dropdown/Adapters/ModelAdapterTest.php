@@ -4,6 +4,7 @@ namespace Tests\Unit\Dropdown\Adapters;
 
 use Tests\TestCase;
 use Tests\Fixtures\Models\User;
+use Tests\Fixtures\Models\UserWithTitle;
 use Tests\Fixtures\Models\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Ignite\Dropdown\Adapters\ModelAdapter;
@@ -147,19 +148,19 @@ class ModelAdapterTest extends TestCase
         $this->assertEquals('Jane Doe', (string) $adapter->renderOption($user));
     }
 
+    public function test_renderOption_with_title_interface()
+    {
+        $user = UserWithTitle::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
+
+        $adapter = new ModelAdapter(UserWithTitle::class, null);
+        $this->assertEquals('Jane Doe (jane@example.com)', (string) $adapter->renderOption($user));
+    }
+
     public function test_renderOption_with_override()
     {
         $user = User::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
 
         $adapter = new ModelAdapter(User::class, null, 'email');
         $this->assertEquals('jane@example.com', (string) $adapter->renderOption($user));
-    }
-
-    public function test_renderSelectedOption()
-    {
-        $user = User::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
-
-        $adapter = new ModelAdapter(User::class);
-        $this->assertEquals('Jane Doe', (string) $adapter->rednerSelectedOption($user));
     }
 }
