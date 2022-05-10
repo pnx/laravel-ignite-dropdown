@@ -238,7 +238,7 @@ class DropdownComponent extends Component
      */
     public function renderSelectedOption($option)
     {
-        return $this->renderOption($option);
+        return $this->adapter->renderSelectedOption($option);
     }
 
     /**
