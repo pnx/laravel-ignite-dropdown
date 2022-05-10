@@ -7,6 +7,7 @@ use Tests\Fixtures\Models\User;
 use Tests\Fixtures\Models\UserWithTitle;
 use Tests\Fixtures\Models\Contact;
 use Tests\Fixtures\Models\ContactWithSubtitle;
+use Tests\Fixtures\Models\ContactWithThumbnail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Ignite\Dropdown\Adapters\ModelAdapter;
 
@@ -163,6 +164,17 @@ class ModelAdapterTest extends TestCase
 
         $adapter = new ModelAdapter(ContactWithSubtitle::class, null);
         $this->assertStringContainsString('Email: xebbax@example.com, Phone: (434) 336-1206', (string) $adapter->renderOption($contact));
+    }
+
+    public function test_renderOption_with_thumbnail_interface()
+    {
+        $contact = ContactWithThumbnail::create([ 'name' => 'Ebba Ullrich', 'address' => '5842 Easy Centre', 'city' => 'Colorado, Virginia', 'zip' => '23232-1470', 'phone' => '(434) 336-1206', 'email' => 'xebbax@example.com' ]);
+
+        $adapter = new ModelAdapter(ContactWithThumbnail::class, null);
+        $result = (string) $adapter->renderOption($contact);
+
+        $this->assertStringContainsString('Ebba Ullrich', $result);
+        $this->assertStringContainsString('<img src="http://exampleimageservice.com/id/651a03bb756518c1b39db48a29c7cefc" />', $result);
     }
 
     public function test_renderOption_with_override()
