@@ -42,9 +42,10 @@ class DropdownComponent extends Component
      */
     public bool $required;
 
-    public $adapter_type;
-
-    public $adapter_options;
+    /**
+     * Arguments used to construct the adapter.
+     */
+    public $adapter_arguments;
 
     /**
      * Placeholder string for the input.
@@ -86,8 +87,7 @@ class DropdownComponent extends Component
     public function mount($name, array $adapter, $value = null, string $no_results = null,
         string $placeholder = null, bool $required = false)
     {
-        $this->adapter_type = array_shift($adapter);
-        $this->adapter_options = $adapter;
+        $this->adapter_arguments = $adapter;
 
         $this->name = $name;
         $this->required = $required;
@@ -124,7 +124,7 @@ class DropdownComponent extends Component
 
     public function getAdapterProperty() : DropdownAdapter
     {
-        return AdapterFactory::make($this->adapter_type, $this->adapter_options);
+        return AdapterFactory::make(...$this->adapter_arguments);
     }
 
     /**
