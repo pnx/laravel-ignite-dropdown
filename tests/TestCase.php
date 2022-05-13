@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Ignite\ServiceProvider;
 use Ignite\DropdownServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
@@ -21,6 +22,7 @@ class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
+            ServiceProvider::class,
             LivewireServiceProvider::class,
             DropdownServiceProvider::class,
         ];
