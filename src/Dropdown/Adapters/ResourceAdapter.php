@@ -60,7 +60,7 @@ class ResourceAdapter implements DropdownAdapter
         $query = $this->resource::query();
 
         if (strlen($search) > 0) {
-            $query->orWhere(function($q) use ($search) {
+            $query->where(function($q) use ($search) {
                 foreach($this->resource::$search as $column) {
                     $q->orWhere($column, 'LIKE', '%' . $search . '%');
                 }
