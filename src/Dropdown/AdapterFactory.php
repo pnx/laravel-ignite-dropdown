@@ -25,6 +25,7 @@ class AdapterFactory
         }
 
         return match($type) {
+            'resource' => new Adapters\ResourceAdapter(...$args),
             'model' => new Adapters\ModelAdapter(...$args),
             'array' => new Adapters\ArrayAdapter(...$args),
             default => app()->make($type, $args)
