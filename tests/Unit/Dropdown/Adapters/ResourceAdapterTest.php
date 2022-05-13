@@ -65,6 +65,18 @@ class ResourceAdapterTest extends TestCase
         $this->assertEquals($user2->id, $result->first()->id);
     }
 
+    public function test_options_with_constraints()
+    {
+        $this->seedUsers();
+
+        $adapter = new ResourceAdapter('user-with-constraints');
+        $expected = User::where('name', 'Frances Goodwin')->get();
+        $result = $adapter->options('Frances', null);
+
+        $this->assertCount(1, $result);
+        $this->assertEquals($expected, $result);
+    }
+
     public function test_options_with_order()
     {
         $this->seedUsers();
