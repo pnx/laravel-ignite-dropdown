@@ -29,6 +29,7 @@ if ($errors->has($name)) {
     </div>
 
     {{-- Dropdown menu --}}
+    @if ($menu_open)
     <ul x-show="open" x-cloak
         x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0"
@@ -52,6 +53,7 @@ if ($errors->has($name)) {
         @endforeach
         @endif
     </ul>
+    @endif
 
     @error($name)
     <p class="text-red-400 text-sm">{{ $message }}</p>
