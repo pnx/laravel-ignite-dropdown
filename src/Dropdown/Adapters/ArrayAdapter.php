@@ -44,6 +44,16 @@ class ArrayAdapter implements DropdownAdapter
     }
 
     /**
+     * Return the first option.
+     *
+     * @return mixed
+     */
+    public function first()
+    {
+        return $this->options->first();
+    }
+
+    /**
      * Get options filtered by user provided search text.
      *
      * @return array

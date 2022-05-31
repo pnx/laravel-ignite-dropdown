@@ -112,6 +112,16 @@ class ResourceAdapterTest extends TestCase
         $this->assertNull($adapter->option('invalid_value'));
     }
 
+    public function test_first()
+    {
+        $user1 = User::create([ 'name' => 'First', 'email' => 'first@example.com' ]);
+        $user2 = User::create([ 'name' => 'Second', 'email' => 'second@example.com' ]);
+
+        $adapter = new ResourceAdapter('user');
+
+        $this->assertEquals('First', $adapter->first()->name);
+    }
+
     public function test_value()
     {
         $user = User::create([ 'name' => 'Arthur Pearce', 'email' => 'arthur@pearce.com' ]);

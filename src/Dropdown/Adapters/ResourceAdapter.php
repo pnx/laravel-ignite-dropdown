@@ -39,6 +39,16 @@ class ResourceAdapter implements DropdownAdapter
     }
 
     /**
+     * Return the first option.
+     *
+     * @return mixed
+     */
+    public function first()
+    {
+        return $this->resource->first();
+    }
+
+    /**
      * Get an option by it's value
      *
      * @return mixed

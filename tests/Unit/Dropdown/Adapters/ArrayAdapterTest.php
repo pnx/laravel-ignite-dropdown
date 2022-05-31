@@ -76,6 +76,17 @@ class ArrayAdapterTest extends TestCase
         $this->assertNull($adapter->option('rewoked'));
     }
 
+    public function test_first()
+    {
+        $adapter = new ArrayAdapter([
+            'Small',
+            'Medium',
+            'Large'
+        ]);
+
+        $this->assertEquals('Small', $adapter->first());
+    }
+
     public function test_value()
     {
         $adapter = new ArrayAdapter([

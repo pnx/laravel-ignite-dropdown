@@ -21,6 +21,13 @@ interface DropdownAdapter
     public function option($value);
 
     /**
+     * Return the first option.
+     *
+     * @return mixed
+     */
+    public function first();
+
+    /**
      * Get options filtered by user provided search text.
      *
      * @param string $search
