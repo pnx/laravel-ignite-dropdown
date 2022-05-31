@@ -91,7 +91,6 @@ class DropdownComponent extends Component
 
         $this->name = $name;
         $this->required = $required;
-        $this->options = $this->options($this->search);
 
         // Set selected option of value are present.
         if ($value) {
@@ -132,8 +131,6 @@ class DropdownComponent extends Component
      */
     public function updatingSearch($value)
     {
-        $this->options = $this->options($value);
-
         // Make sure the menu is open.
         $this->menu_open = true;
     }
@@ -216,9 +213,9 @@ class DropdownComponent extends Component
      *
      * @return array
      */
-    public function options(string $search) : Collection
+    public function getOptionsProperty() : Collection
     {
-        return $this->adapter->options($search, $this->max_results);
+        return $this->adapter->options($this->search, $this->max_results);
     }
 
     /**
