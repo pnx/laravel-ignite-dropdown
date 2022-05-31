@@ -103,11 +103,11 @@ class DropdownComponent extends Component
             $this->select($value);
         }
 
-        if (strlen($placeholder) > 0) {
+        if ($placeholder !== null && strlen($placeholder) > 0) {
             $this->placeholder = $placeholder;
         }
 
-        if (strlen($no_results) > 0) {
+        if ($no_results !== null && strlen($no_results) > 0) {
             $this->no_results = $no_results;
         }
     }
