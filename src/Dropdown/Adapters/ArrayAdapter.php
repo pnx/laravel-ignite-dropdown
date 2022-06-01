@@ -34,16 +34,6 @@ class ArrayAdapter implements DropdownAdapter
     }
 
     /**
-     * Get an option by it's value
-     *
-     * @return mixed
-     */
-    public function option($value)
-    {
-        return $this->options[$value] ?? null;
-    }
-
-    /**
      * Return the first option.
      *
      * @return mixed

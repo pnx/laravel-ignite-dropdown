@@ -14,13 +14,6 @@ interface DropdownAdapter
     public function value($option);
 
     /**
-     * Get an option by it's value
-     *
-     * @return mixed
-     */
-    public function option($value);
-
-    /**
      * Return the first option.
      *
      * @return mixed
