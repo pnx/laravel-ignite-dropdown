@@ -9,6 +9,9 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 
 class AdapterFactoryTest extends TestCase
 {
+    /**
+     * @requires PHP 8.0
+     */
     public function test_make_with_named_arguments()
     {
         $args = ['type' => 'array', 'options' => ['One', 'Two']];
