@@ -48,7 +48,7 @@ class ResourceAdapterTest extends TestCase
 
         $adapter = new ResourceAdapter('user-with-email-search');
 
-        $this->assertEquals(User::all(), $adapter->options('', null));
+        $this->assertEquals(User::all()->keyBy('id'), $adapter->options('', null));
 
         // Find John by email.
         $result = $adapter->options('123', null);
@@ -57,8 +57,8 @@ class ResourceAdapterTest extends TestCase
 
         $result = $adapter->options('Doe', null);
         $this->assertCount(2, $result);
-        $this->assertEquals($user1->id, $result[0]->id);
-        $this->assertEquals($user2->id, $result[1]->id);
+        $this->assertEquals($user1->id, $result[$user1->id]->id);
+        $this->assertEquals($user2->id, $result[$user2->id]->id);
 
         $result = $adapter->options('Jane D', null);
         $this->assertCount(1, $result);
@@ -70,7 +70,7 @@ class ResourceAdapterTest extends TestCase
         $this->seedUsers();
 
         $adapter = new ResourceAdapter('user-with-constraints');
-        $expected = User::where('name', 'Frances Goodwin')->get();
+        $expected = User::where('name', 'Frances Goodwin')->get()->keyBy('id');
         $result = $adapter->options('Frances', null);
 
         $this->assertCount(1, $result);
@@ -85,7 +85,7 @@ class ResourceAdapterTest extends TestCase
         $user2 = User::create([ 'name' => 'Jane Doe', 'email' => 'jane@example.com' ]);
 
         $adapter = new ResourceAdapter('user-with-order');
-        $expected = User::orderBy('name', 'desc')->get();
+        $expected = User::orderBy('name', 'desc')->get()->keyBy('id');
 
         $this->assertEquals($expected, $adapter->options('', null));
     }

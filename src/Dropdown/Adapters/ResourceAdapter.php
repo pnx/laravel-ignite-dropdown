@@ -77,7 +77,7 @@ class ResourceAdapter implements DropdownAdapter
             });
         }
 
-        return $query->get();
+        return $query->get()->keyBy($this->resource::$id);
     }
 
     /**
