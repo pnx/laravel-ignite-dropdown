@@ -52,7 +52,7 @@ class ArrayAdapterTest extends TestCase
         $this->assertEquals(['One', 'Two'], $adapter->options('', 2)->toArray());
     }
 
-    public function test_option()
+    public function test_key()
     {
         $adapter = new ArrayAdapter([
             'Small',
@@ -60,11 +60,12 @@ class ArrayAdapterTest extends TestCase
             'Large'
         ]);
 
-        $this->assertEquals('Medium', $adapter->option(1));
-        $this->assertNull($adapter->option('Extra large'));
+        $options = $adapter->options('', null);
+        $this->assertEquals('Medium', $options->get(1));
+        $this->assertNull($options->get('Extra large'));
     }
 
-    public function test_option_assoc()
+    public function test_key_assoc()
     {
         $adapter = new ArrayAdapter([
             'draft' => 'Draft',
@@ -72,8 +73,9 @@ class ArrayAdapterTest extends TestCase
             'archived' => 'Archived',
         ]);
 
-        $this->assertEquals('Published', $adapter->option('published'));
-        $this->assertNull($adapter->option('rewoked'));
+        $options = $adapter->options('', null);
+        $this->assertEquals('Published', $options->get('published'));
+        $this->assertNull($options->get('rewoked'));
     }
 
     public function test_first()

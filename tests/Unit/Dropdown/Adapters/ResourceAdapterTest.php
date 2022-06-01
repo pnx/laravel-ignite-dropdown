@@ -90,26 +90,28 @@ class ResourceAdapterTest extends TestCase
         $this->assertEquals($expected, $adapter->options('', null));
     }
 
-    public function test_option()
+    public function test_options_key()
     {
         $user = User::create([ 'name' => 'John Doe', 'email' => 'john.123@example.com' ]);
 
         $adapter = new ResourceAdapter('user');
-        $result = $adapter->option($user->id);
+        $options = $adapter->options('', null);
+        $result = $options->get($user->id);
         $this->assertNotNull($result);
         $this->assertEquals($user->toArray(), $result->toArray());
-        $this->assertNull($adapter->option('invalid_value'));
+        $this->assertNull($options->get('invalid_value'));
     }
 
-    public function test_option_with_custom_id()
+    public function test_options_key_custom_id()
     {
         $contact = Contact::create([ 'name' => 'Ebba Ullrich', 'address' => '5842 Easy Centre', 'city' => 'Colorado, Virginia', 'zip' => '23232-1470', 'phone' => '(434) 336-1206', 'email' => 'xebbax@example.com' ]);
 
         $adapter = new ResourceAdapter('contact-with-email-id');
-        $result = $adapter->option($contact->email);
+        $options = $adapter->options('', null);
+        $result = $options->get($contact->email);
         $this->assertNotNull($result);
         $this->assertEquals($contact->toArray(), $result->toArray());
-        $this->assertNull($adapter->option('invalid_value'));
+        $this->assertNull($options->get('invalid_value'));
     }
 
     public function test_first()
