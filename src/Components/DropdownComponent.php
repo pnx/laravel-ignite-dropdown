@@ -19,9 +19,9 @@ class DropdownComponent extends Component
     public string $name;
 
     /**
-     * The selected value
+     * The selected option
      */
-    public $value;
+    public $selected;
 
     /**
      * Search string
@@ -98,8 +98,7 @@ class DropdownComponent extends Component
         }
         // Otherwise, select first option if required flag is set.
         else if ($this->required) {
-            $value = $this->value($this->options->first());
-            $this->select($value);
+            $this->selected = $this->adapter->first();
         }
 
         if ($placeholder !== null && strlen($placeholder) > 0) {
@@ -112,13 +111,13 @@ class DropdownComponent extends Component
     }
 
     /**
-     * Get selected item property
+     * Get selected options value.
      *
      * @return mixed
      */
-    public function getSelectedProperty()
+    public function getValueProperty()
     {
-        return $this->value !== null ? $this->option($this->value) : null;
+        return $this->hasSelection() ? $this->value($this->selected) : null;
     }
 
     public function getAdapterProperty() : DropdownAdapter
@@ -158,7 +157,7 @@ class DropdownComponent extends Component
      */
     public function select($value = null)
     {
-        $this->value = $this->option($value) ? $value : null;
+        $this->selected = $this->options->get($value);
 
         // Notify any parent component.
         $this->emitUp('dropdown-select', $this->name, $this->value);
@@ -173,7 +172,7 @@ class DropdownComponent extends Component
      */
     public function hasSelection() : bool
     {
-        return $this->value !== null;
+        return $this->selected !== null;
     }
 
     /**
