@@ -24,11 +24,15 @@ class AdapterFactory
             }
         }
 
-        return match($type) {
-            'resource' => new Adapters\ResourceAdapter(...$args),
-            'model' => new Adapters\ModelAdapter(...$args),
-            'array' => new Adapters\ArrayAdapter(...$args),
-            default => app()->make($type, $args)
+        switch ($type) {
+        case 'resource' :
+            return new Adapters\ResourceAdapter(...$args);
+        case 'model':
+            return new Adapters\ModelAdapter(...$args);
+        case 'array':
+            return new Adapters\ArrayAdapter(...$args);
+        default :
+            return app()->make($type, $args);
         };
     }
 }
