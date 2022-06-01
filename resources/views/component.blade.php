@@ -46,8 +46,8 @@ if ($errors->has($name)) {
         @if (count($this->options) < 1)
         <li class="px-4 py-2 text-center text-gray-500">{{ __($no_results) }}</li>
         @else
-        @foreach($this->options as $option)
-        <li wire:key="{{ $this->value($option) }}" wire:click="select('{{ $this->value($option) }}')" class="px-4 py-2 cursor-pointer first:rounded-t last:rounded-b hover:bg-primary hover:text-white">
+        @foreach($this->options as $key => $option)
+        <li wire:key="{{ $key }}" wire:click="select('{{ $key }}')" class="px-4 py-2 cursor-pointer first:rounded-t last:rounded-b hover:bg-primary hover:text-white">
             {{ $this->renderOption($option) }}
         </li>
         @endforeach
