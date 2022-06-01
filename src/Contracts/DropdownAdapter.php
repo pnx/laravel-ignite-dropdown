@@ -30,6 +30,8 @@ interface DropdownAdapter
     /**
      * Get options filtered by user provided search text.
      *
+     * The collection returned should have the option id as key and the option as value.
+     *
      * @param string $search
      * @param int|null $limit
      * @return array
