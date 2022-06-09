@@ -27,6 +27,8 @@ class AdapterFactory
         switch ($type) {
         case 'resource' :
             return new Adapters\ResourceAdapter(...$args);
+        case 'enum':
+            return new Adapters\EnumAdapter(...$args);
         case 'model':
             return new Adapters\ModelAdapter(...$args);
         case 'array':
