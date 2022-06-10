@@ -2,7 +2,7 @@
 
 namespace Tests\Fixtures\Enum;
 
-enum UnitEnum
+enum UnitEnumFixture
 {
     case Hearts;
     case Diamonds;

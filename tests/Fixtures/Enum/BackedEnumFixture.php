@@ -2,7 +2,7 @@
 
 namespace Tests\Fixtures\Enum;
 
-enum BackedEnum : string
+enum BackedEnumFixture : string
 {
     case SE = "Sweden";
     case FI = "Finland";

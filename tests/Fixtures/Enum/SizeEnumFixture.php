@@ -2,7 +2,7 @@
 
 namespace Tests\Fixtures\Enum;
 
-enum SizeEnum : string
+enum SizeEnumFixture : string
 {
     case S = "Small";
     case M = "Medium";

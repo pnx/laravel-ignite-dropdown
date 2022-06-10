@@ -3,79 +3,79 @@
 namespace Tests\Unit\Dropdown\Adapters;
 
 use Tests\TestCase;
-use Tests\Fixtures\Enum\BackedEnum;
-use Tests\Fixtures\Enum\UnitEnum;
-use Tests\Fixtures\Enum\DescriptionEnum;
-use Tests\Fixtures\Enum\SizeEnum;
+use Tests\Fixtures\Enum\BackedEnumFixture;
+use Tests\Fixtures\Enum\UnitEnumFixture;
+use Tests\Fixtures\Enum\DescriptionEnumFixture;
+use Tests\Fixtures\Enum\SizeEnumFixture;
 use Ignite\Dropdown\Adapters\EnumAdapter;
 
 class EnumAdapterTest extends TestCase
 {
     public function test_options_unit()
     {
-        $adapter = new EnumAdapter(UnitEnum::class);
+        $adapter = new EnumAdapter(UnitEnumFixture::class);
 
         $expected = [
-            'Hearts' => UnitEnum::Hearts,
-            'Diamonds' => UnitEnum::Diamonds,
-            'Clubs' => UnitEnum::Clubs,
-            'Spades' => UnitEnum::Spades
+            'Hearts' => UnitEnumFixture::Hearts,
+            'Diamonds' => UnitEnumFixture::Diamonds,
+            'Clubs' => UnitEnumFixture::Clubs,
+            'Spades' => UnitEnumFixture::Spades
         ];
 
         $this->assertEquals($expected, $adapter->options('', null)->toArray());
-        $this->assertEquals(['Diamonds' => UnitEnum::Diamonds], $adapter->options('ds', null)->toArray());
+        $this->assertEquals(['Diamonds' => UnitEnumFixture::Diamonds], $adapter->options('ds', null)->toArray());
     }
 
     public function test_options_backed()
     {
-        $adapter = new EnumAdapter(BackedEnum::class);
+        $adapter = new EnumAdapter(BackedEnumFixture::class);
 
         $expected = [
-            'SE' => BackedEnum::SE,
-            'FI' => BackedEnum::FI,
-            'IN' => BackedEnum::IN,
-            'PL' => BackedEnum::PL,
+            'SE' => BackedEnumFixture::SE,
+            'FI' => BackedEnumFixture::FI,
+            'IN' => BackedEnumFixture::IN,
+            'PL' => BackedEnumFixture::PL,
         ];
 
         $this->assertEquals($expected, $adapter->options('', null)->toArray());
-        $this->assertEquals(['SE' => BackedEnum::SE], $adapter->options('S', null)->toArray());
+        $this->assertEquals(['SE' => BackedEnumFixture::SE], $adapter->options('S', null)->toArray());
     }
 
     public function test_options_with_display()
     {
-        $adapter = new EnumAdapter(SizeEnum::class);
+        $adapter = new EnumAdapter(SizeEnumFixture::class);
 
         $expected = [
-            'S' => SizeEnum::S,
-            'M' => SizeEnum::M,
-            'L' => SizeEnum::L,
+            'S' => SizeEnumFixture::S,
+            'M' => SizeEnumFixture::M,
+            'L' => SizeEnumFixture::L,
         ];
 
         $this->assertEquals($expected, $adapter->options('', null)->toArray());
-        $this->assertEquals(['S' => SizeEnum::S], $adapter->options('all', null)->toArray());
+        $this->assertEquals(['S' => SizeEnumFixture::S], $adapter->options('all', null)->toArray());
     }
 
     public function test_options_with_description()
     {
-        $adapter = new EnumAdapter(DescriptionEnum::class);
+        $adapter = new EnumAdapter(DescriptionEnumFixture::class);
 
         $expected = [
-            'APPLE' => DescriptionEnum::APPLE,
-            'PEAR' => DescriptionEnum::PEAR,
-            'ORANGE' => DescriptionEnum::ORANGE,
+            'APPLE' => DescriptionEnumFixture::APPLE,
+            'PEAR' => DescriptionEnumFixture::PEAR,
+            'ORANGE' => DescriptionEnumFixture::ORANGE,
         ];
 
         $this->assertEquals($expected, $adapter->options('', null)->toArray());
-        $this->assertEquals(['ORANGE' => DescriptionEnum::ORANGE], $adapter->options('Color', null)->toArray());
+        $this->assertEquals(['ORANGE' => DescriptionEnumFixture::ORANGE], $adapter->options('Color', null)->toArray());
     }
 
     public function test_options_with_limit()
     {
-        $adapter = new EnumAdapter(BackedEnum::class);
+        $adapter = new EnumAdapter(BackedEnumFixture::class);
 
         $expected = [
-            'SE' => BackedEnum::SE,
-            'FI' => BackedEnum::FI
+            'SE' => BackedEnumFixture::SE,
+            'FI' => BackedEnumFixture::FI
         ];
 
         $this->assertEquals($expected, $adapter->options('', 2)->toArray());
@@ -83,46 +83,46 @@ class EnumAdapterTest extends TestCase
 
     public function test_first_unit()
     {
-        $adapter = new EnumAdapter(UnitEnum::class);
+        $adapter = new EnumAdapter(UnitEnumFixture::class);
 
-        $this->assertEquals(UnitEnum::Hearts, $adapter->first());
+        $this->assertEquals(UnitEnumFixture::Hearts, $adapter->first());
     }
 
     public function test_first_backed()
     {
-        $adapter = new EnumAdapter(BackedEnum::class);
+        $adapter = new EnumAdapter(BackedEnumFixture::class);
 
-        $this->assertEquals(BackedEnum::SE, $adapter->first());
+        $this->assertEquals(BackedEnumFixture::SE, $adapter->first());
     }
 
     public function test_first_display()
     {
-        $adapter = new EnumAdapter(SizeEnum::class);
+        $adapter = new EnumAdapter(SizeEnumFixture::class);
 
-        $this->assertEquals(SizeEnum::S, $adapter->first());
+        $this->assertEquals(SizeEnumFixture::S, $adapter->first());
     }
 
     public function test_value_unit()
     {
-        $adapter = new EnumAdapter(UnitEnum::class);
+        $adapter = new EnumAdapter(UnitEnumFixture::class);
 
         $this->assertEquals('Hearts', $adapter->value('Hearts'));
-        $this->assertEquals('Clubs', $adapter->value(UnitEnum::Clubs));
+        $this->assertEquals('Clubs', $adapter->value(UnitEnumFixture::Clubs));
     }
 
     public function test_value_backed()
     {
-        $adapter = new EnumAdapter(BackedEnum::class);
+        $adapter = new EnumAdapter(BackedEnumFixture::class);
 
         $this->assertEquals('Sweden', $adapter->value('SE'));
-        $this->assertEquals('Finland', $adapter->value(BackedEnum::FI));
+        $this->assertEquals('Finland', $adapter->value(BackedEnumFixture::FI));
     }
 
     public function test_value_size()
     {
-        $adapter = new EnumAdapter(SizeEnum::class);
+        $adapter = new EnumAdapter(SizeEnumFixture::class);
 
         $this->assertEquals('L', $adapter->value('L'));
-        $this->assertEquals('M', $adapter->value(SizeEnum::M));
+        $this->assertEquals('M', $adapter->value(SizeEnumFixture::M));
     }
 }

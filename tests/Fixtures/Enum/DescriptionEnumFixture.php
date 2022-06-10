@@ -2,7 +2,7 @@
 
 namespace Tests\Fixtures\Enum;
 
-enum DescriptionEnum : string
+enum DescriptionEnumFixture : string
 {
     case APPLE  = 'Apple';
     case PEAR   = 'Pear';
