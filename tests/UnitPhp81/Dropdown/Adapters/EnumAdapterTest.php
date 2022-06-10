@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Dropdown\Adapters;
+namespace Tests\UnitPhp81\Dropdown\Adapters;
 
 use Tests\TestCase;
 use Tests\Fixtures\Enum\BackedEnumFixture;
