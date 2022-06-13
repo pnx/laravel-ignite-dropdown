@@ -100,6 +100,20 @@ class DropdownComponentTest extends TestCase
             ->assertSet('options', collect([2 => 'Two']));
     }
 
+    public function test_options_max_results()
+    {
+        $array = [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three'
+        ];
+
+        Livewire::test(DropdownComponent::class, ['name' => 'dropdown', 'adapter' => [ 'array', $array ], 'max_results' => 2 ])
+            ->set('search', '')
+            ->assertSet('max_results', 2)
+            ->assertSet('options', collect([1 => 'One', 2 => 'Two']));
+    }
+
     public function test_open_close()
     {
         Livewire::test(DropdownComponent::class, ['name' => 'dropdown', 'adapter' => [ 'array', [] ] ])
