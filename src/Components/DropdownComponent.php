@@ -44,8 +44,10 @@ class DropdownComponent extends Component
 
     /**
      * Arguments used to construct the adapter.
+     *
+     * @var array
      */
-    public $adapter_arguments;
+    public array $adapter_arguments;
 
     /**
      * Max number of options to show in the dropdown menu.
