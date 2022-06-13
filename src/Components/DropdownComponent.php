@@ -15,11 +15,15 @@ class DropdownComponent extends Component
 
     /**
      * Input name
+     *
+     * @var string
      */
     public string $name;
 
     /**
      * The selected option
+     *
+     * @var mixed
      */
     public $selected;
 
@@ -39,6 +43,8 @@ class DropdownComponent extends Component
 
     /**
      * True if dropdown value is required, false if optional.
+     *
+     * @var bool
      */
     public bool $required;
 
@@ -58,21 +64,29 @@ class DropdownComponent extends Component
 
     /**
      * Placeholder string for the input.
+     *
+     * @var string
      */
     public string $placeholder = 'ignite::dropdown.placeholder';
 
     /**
      * Translation string for when no search results are found.
+     *
+     * @var string
      */
     public string $no_results = 'ignite::dropdown.no-results';
 
     /**
      * View script to render the dropdown menu.
+     *
+     * @var string
      */
     protected string $component_view = 'ignite-dropdown::component';
 
     /**
      * View script to render the placeholder text when no item is selected.
+     *
+     * @var string
      */
     protected string $placeholder_view = 'ignite-dropdown::placeholder';
 
