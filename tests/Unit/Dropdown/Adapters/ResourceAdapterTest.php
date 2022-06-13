@@ -33,9 +33,16 @@ class ResourceAdapterTest extends TestCase
     public function seedContacts()
     {
         Contact::insert([
-            [ 'name' => 'Japera Trost', 'address' => '6039 Green Nook', 'city' => 'Shingle Springs, Idaho', 'zip' => '83206-4308', 'phone' => '(208) 362-6240', 'email' => 'trost@example.com' ],
-            [ 'name' => 'Stanko Jarman', 'address' => '2803 Old Line', 'city' => 'Yellow Dog, Idaho', 'zip' => '83889-4521', 'phone' => '(208) 564-7514', 'email' => 'yellowstanko@example.com' ],
-            [ 'name' => 'Avenall Coates', 'address' => '4008 Rocky Mews', 'city' => 'Oquawka, South Dakota', 'zip' => '57726-1540', 'phone' => '(605) 402-8834', 'email' => 'avenall.coates123@example.com' ]
+            ["name" => "Hasad Yang","email" => "hasadyang3669@hotmail.com","phone" => "1-741-219-7257","address" => "6190 Semper Road","city" => "Krems an der Donau, Austria","zip" => "874293"],
+            ["name" => "Gisela Tate","email" => "giselatate1439@google.edu","phone" => "1-828-925-7342","address" => "759-2777 Nibh. Rd.","city" => "Linz, Austria","zip" => "351172"],
+            ["name" => "Nash Holcomb","email" => "nashholcomb@hotmail.com","phone" => "1-523-175-9889","address" => "Ap #165-1061 Sit Avenue","city" => "Chile Chico, Aisén","zip" => "35030"],
+            ["name" => "Akeem Francis","email" => "akeemfrancis1490@google.com","phone" => "(893) 202-9108","address" => "Ap #701-6880 Cum St.","city" => "Naga, Visayas","zip" => "56-66"],
+            ["name" => "Kennedy Turner","email" => "kennedyturner6044@protonmail.net","phone" => "(416) 204-1616","address" => "711-3034 Diam. Street","city" => "Aizwal, Mizoram","zip" => "7855-5092"],
+            ["name" => "Shad Brady","email" => "shadbrady6019@hotmail.org","phone" => "(411) 927-5922","address" => "Ap #494-8640 Eros. Road","city" => "Iquitos, Loreto","zip" => "368892"],
+            ["name" => "Dacey Rasmussen","email" => "daceyrasmussen@outlook.ca","phone" => "1-566-524-2915","address" => "539-6169 In St.","city" => "Launceston, Tasmania","zip" => "368674"],
+            ["name" => "Raphael Estrada","email" => "raphaelestrada3992@yahoo.org","phone" => "1-335-501-5466","address" => "2682 Elit Road","city" => "Märsta, Stockholms län","zip" => "4232"],
+            ["name" => "Germane Morgan","email" => "germanemorgan2700@outlook.net","phone" => "1-121-701-8270","address" => "Ap #651-9106 Arcu. Av.","city" => "Puerto Carreño, Vichada","zip" => "25423"],
+            ["name" => "Amal Frank","email" => "amalfrank285@hotmail.couk","phone" => "(937) 201-8527","address" => "8066 Laoreet, St.","city" => "Belfast, Ulster","zip" => "7143"]
         ]);
     }
 
