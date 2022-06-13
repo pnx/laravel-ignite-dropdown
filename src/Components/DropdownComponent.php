@@ -48,6 +48,13 @@ class DropdownComponent extends Component
     public $adapter_arguments;
 
     /**
+     * Max number of options to show in the dropdown menu.
+     *
+     * @var int
+     */
+    public int $max_results;
+
+    /**
      * Placeholder string for the input.
      */
     public string $placeholder = 'ignite::dropdown.placeholder';
@@ -67,8 +74,6 @@ class DropdownComponent extends Component
      */
     protected string $placeholder_view = 'ignite-dropdown::placeholder';
 
-    protected $max_results = null;
-
     protected function getListeners()
     {
         return $this->validation_listeners;
@@ -85,12 +90,13 @@ class DropdownComponent extends Component
      * @return void
      */
     public function mount($name, array $adapter, $value = null, string $no_results = null,
-        string $placeholder = null, bool $required = false)
+        string $placeholder = null, bool $required = false, int $max_results = 30)
     {
         $this->adapter_arguments = $adapter;
 
         $this->name = $name;
         $this->required = $required;
+        $this->max_results = $max_results;
 
         // Set selected option of value are present.
         if ($value) {
