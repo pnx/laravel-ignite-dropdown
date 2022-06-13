@@ -134,10 +134,10 @@ class ResourceAdapterTest extends TestCase
 
     public function test_value_with_custom_id()
     {
-        $user = User::create([ 'name' => 'Lelio Aonghuis', 'email' => 'lelio@aonghuis.com' ]);
+        $contact = Contact::create([ "name" => "Buffy Gross", "address" => "Ap #946-4820 Iaculis Rd.", "city" => "Itanagar, Piura", "zip" => "48980", "phone" => "1-424-835-7727", "email" => "in.cursus@aol.edu"]);
 
         $adapter = new ResourceAdapter('contact-with-email-id');
-        $this->assertEquals($user->email, $adapter->value($user));
+        $this->assertEquals($contact->email, $adapter->value($contact));
     }
 
     public function test_renderOption()
