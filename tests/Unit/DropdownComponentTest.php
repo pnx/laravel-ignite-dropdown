@@ -21,6 +21,19 @@ class DropdownComponentTest extends TestCase
             ->assertSet('selected', 'Two');
     }
 
+    public function test_mount_with_value_and_max_results()
+    {
+        $array = [
+            'One',
+            'Two'
+        ];
+
+        Livewire::test(DropdownComponent::class, ['name' => 'dropdown', 'value' => 1, 'adapter' => [ 'array', $array ], 'max_results' => 1 ])
+            ->assertSet('name', 'dropdown')
+            ->assertSet('value', 1)
+            ->assertSet('selected', 'Two');
+    }
+
     public function test_mount_with_invalid_value()
     {
         $array = [
