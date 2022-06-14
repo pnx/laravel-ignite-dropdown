@@ -179,9 +179,7 @@ class DropdownComponent extends Component
      */
     public function select($value = null)
     {
-        // TODO: This is inefficient, should let adapter
-        // figure out how to best find the option for us.
-        $this->selected = $this->adapter->options('', null)->get($value);
+        $this->selected = $this->option($value);
 
         // Notify any parent component.
         $this->emitUp('dropdown-select', $this->name, $this->value);
