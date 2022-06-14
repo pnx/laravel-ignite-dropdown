@@ -102,6 +102,20 @@ class EnumAdapterTest extends TestCase
         $this->assertEquals(SizeEnumFixture::S, $adapter->first());
     }
 
+    public function test_option_unit()
+    {
+        $adapter = new EnumAdapter(UnitEnumFixture::class);
+
+        $this->assertEquals(UnitEnumFixture::Hearts, $adapter->option('Hearts'));
+    }
+
+    public function test_option_backed()
+    {
+        $adapter = new EnumAdapter(BackedEnumFixture::class);
+
+        $this->assertEquals(BackedEnumFixture::FI, $adapter->option('FI'));
+    }
+
     public function test_value_unit()
     {
         $adapter = new EnumAdapter(UnitEnumFixture::class);
