@@ -131,6 +131,25 @@ class ResourceAdapterTest extends TestCase
         $this->assertEquals('First', $adapter->first()->name);
     }
 
+    public function test_option()
+    {
+        $this->seedUsers();
+        $user = User::create([ 'name' => 'John Doe', 'email' => 'john.123@example.com' ]);
+
+        $adapter = new ResourceAdapter('user');
+
+        $this->assertEquals('John Doe', $adapter->option($user->id)->name);
+    }
+
+    public function test_option_with_custom_id()
+    {
+        $this->seedContacts();
+        $contact = Contact::create([ "name" => "Richard Holder","address" => "Ap #499-3524 Senectus Rd.","city" => "Umlazi, Sverdlovsk Oblast","zip" => "388617","phone" => "(669) 332-0357","email" => "magna.malesuada.vel@outlook.edu"]);
+
+        $adapter = new ResourceAdapter('contact-with-email-id');
+        $this->assertEquals($contact->toArray(), $adapter->option('magna.malesuada.vel@outlook.edu')->toArray());
+    }
+
     public function test_value()
     {
         $user = User::create([ 'name' => 'Arthur Pearce', 'email' => 'arthur@pearce.com' ]);

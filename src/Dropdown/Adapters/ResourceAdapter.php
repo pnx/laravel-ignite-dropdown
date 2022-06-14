@@ -49,6 +49,18 @@ class ResourceAdapter implements DropdownAdapter
     }
 
     /**
+     * Get an option by it's value.
+     *
+     * @return mixed
+     */
+    public function option($value)
+    {
+        return $this->resource::query()
+            ->where($this->resource::$id, $value)
+            ->first();
+    }
+
+    /**
      * Get options filtered by user provided search text.
      *
      * @param string $search
