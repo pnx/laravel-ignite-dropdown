@@ -89,6 +89,28 @@ class ArrayAdapterTest extends TestCase
         $this->assertEquals('Small', $adapter->first());
     }
 
+    public function test_option()
+    {
+        $adapter = new ArrayAdapter([
+            'Small',
+            'Medium',
+            'Large'
+        ]);
+
+        $this->assertEquals('Large', $adapter->option(2));
+    }
+
+    public function test_option_assoc()
+    {
+        $adapter = new ArrayAdapter([
+            'S' => 'Small',
+            'M' => 'Medium',
+            'L' => 'Large'
+        ]);
+
+        $this->assertEquals('Medium', $adapter->option('M'));
+    }
+
     public function test_value()
     {
         $adapter = new ArrayAdapter([

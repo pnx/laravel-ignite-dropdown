@@ -44,6 +44,16 @@ class ArrayAdapter implements DropdownAdapter
     }
 
     /**
+     * Get an option by it's value.
+     *
+     * @return mixed
+     */
+    public function option($value)
+    {
+        return $this->options->get($value);
+    }
+
+    /**
      * Get options filtered by user provided search text.
      *
      * @return array
