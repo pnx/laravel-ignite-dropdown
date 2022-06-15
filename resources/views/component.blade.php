@@ -20,7 +20,7 @@ if ($errors->has($name)) {
 
         <div class="bg-white px-3 py-2 w-full h-10 text-gray-600 rounded-md border {!! $border !!} focus:ring-opacity-50">
             {{ $this->renderSelection() }}
-            <input type="text" wire:model="search" :name="$name . '_search'" class="absolute w-11/12 bg-transparent select-none" autocomplete="off" />
+            <input type="text" wire:model="search" name="{{ $name . '_search' }}" class="absolute w-11/12 bg-transparent select-none" autocomplete="off" />
         </div>
 
         @if ($this->getIcon())
